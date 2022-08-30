@@ -18,9 +18,8 @@ public class Spawner : MonoBehaviour
     {
         while (true)
         {
-            int randomEnemy = Random.Range(0, enemies.Length);
-            Instantiate(enemies[randomEnemy], transform.position, Quaternion.identity);
-
+            GameObject Enemy = PoolObject.poolObject.RequestPrefab();
+            Enemy.transform.position = this.transform.position;
             yield return new WaitForSeconds(SpawnTime);
 
         }

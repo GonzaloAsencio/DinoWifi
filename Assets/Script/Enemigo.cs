@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class Enemigo : MonoBehaviour
 {
-    
     public float Speed = 5f;
 
    
     void Update()
     {
-        transform.Translate(Vector2.left * Speed * Time.deltaTime);
+       transform.Translate(Vector2.left * Speed * Time.deltaTime);
     }
+
+   
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Zone"))
         {
-            Destroy(this.gameObject);
+            // Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
 
     }

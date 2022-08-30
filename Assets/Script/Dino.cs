@@ -6,6 +6,7 @@ public class Dino : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundMask;
     public float radius;
+    public AudioClip jumpSFX;
 
     private Rigidbody2D dinoRb2d;
 
@@ -20,7 +21,12 @@ public class Dino : MonoBehaviour
     {
         bool isGrounded = Physics2D.OverlapCircle(groundCheck.position, radius, groundMask);
         if (Input.GetKeyDown(KeyCode.Space))
+        {
             dinoRb2d.AddForce(Vector2.up * upForce);
+            AudioManager.Instance.PlaySound(jumpSFX);
+
+        }
+      
         
     }
 
